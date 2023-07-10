@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ITEM_PENJUALAN', function (Blueprint $table) {
-            $table->string("NOTA");
-            $table->string("KODE_BARANG");
-            $table->integer("QTY");
+        Schema::create('PENJUALAN', function (Blueprint $table) {
+            $table->string('ID_NOTA')->primary();
+            $table->date('TGL');
+            $table->string('KODE_PELANGGAN');
+            $table->string('SUB_TOTAL');
             $table->timestamps();
 
-            $table->foreign('NOTA')->references('ID_NOTA')->on('PENJUALAN');
-            $table->foreign('KODE_BARANG')->references('KODE')->on('BARANG');
+            $table->foreign('KODE_PELANGGAN')->references('ID_PELANGGAN')->on('PELANGGAN');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ITEM_PENJUALAN');
+        Schema::dropIfExists('PENJUALAN');
     }
 };

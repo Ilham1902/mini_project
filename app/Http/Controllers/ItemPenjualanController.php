@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\item_penjualan;
-use App\Http\Requests\Storeitem_penjualanRequest;
-use App\Http\Requests\Updateitem_penjualanRequest;
+use Illuminate\Http\Request;
 
 class ItemPenjualanController extends Controller
 {
@@ -19,22 +17,12 @@ class ItemPenjualanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Storeitem_penjualanRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Storeitem_penjualanRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -42,21 +30,10 @@ class ItemPenjualanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\item_penjualan  $item_penjualan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(item_penjualan $item_penjualan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\item_penjualan  $item_penjualan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(item_penjualan $item_penjualan)
+    public function show($id)
     {
         //
     }
@@ -64,11 +41,11 @@ class ItemPenjualanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Updateitem_penjualanRequest  $request
-     * @param  \App\Models\item_penjualan  $item_penjualan
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Updateitem_penjualanRequest $request, item_penjualan $item_penjualan)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +53,10 @@ class ItemPenjualanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\item_penjualan  $item_penjualan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(item_penjualan $item_penjualan)
+    public function destroy($id)
     {
         //
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\barang;
+use App\Models\Penjualan;
 use Illuminate\Http\Request;
 
-class BarangController extends Controller
+class PenjualanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $data = barang::all();
+        $data = Penjualan::all();
 
         return response()->json($data, 200);
     }
@@ -27,14 +27,14 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        $nama = $request->nama;
-        $kategori = $request->kategori;
-        $harga = $request->harga;
+        $tgl            = $request->tgl;
+        $kode_pelanggan = $request->kode_pelanggan;
+        $sub_total      = $request->sub_total;
 
-        $data = barang::create([
-            "NAMA"      => $nama,
-            "KATEGORI"  => $kategori,
-            "HARGA"     => $harga
+        $data = Penjualan::create([
+            "TGL"               => $tgl,
+            "KODE_PELANGGAN"    => $kode_pelanggan,
+            "SUB_TOTAL"         => $sub_total
         ]);
 
         return response()->json($data, 200);
@@ -48,7 +48,7 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-        $data = barang::where('KODE', $id)->get();
+        $data = Penjualan::where('ID_NOTA', $id)->get();
 
         return response()->json($data, 200);
     }
@@ -62,14 +62,14 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $nama = $request->nama;
-        $kategori = $request->kategori;
-        $harga = $request->harga;
+        $tgl            = $request->tgl;
+        $kode_pelanggan = $request->kode_pelanggan;
+        $sub_total      = $request->sub_total;
 
-        $data = barang::where('KODE', $id)->update([
-            "NAMA"      => $nama,
-            "KATEGORI"  => $kategori,
-            "HARGA"     => $harga
+        $data = Penjualan::where('ID_NOTA', $id)->update([
+            "TGL"               => $tgl,
+            "KODE_PELANGGAN"    => $kode_pelanggan,
+            "SUB_TOTAL"         => $sub_total
         ]);
 
         return response()->json($data, 200);
@@ -83,7 +83,7 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        $data = barang::where('KODE', $id)->delete();
+        $data = Penjualan::where('ID_NOTA', $id)->delete();
         return response()->json($data, 200);
     }
 }
