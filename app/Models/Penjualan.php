@@ -21,7 +21,13 @@ class Penjualan extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $model->ID_NOTA = 'NOTA_' . (static::count() + 1);
+            $latestNota = static::max('ID_NOTA');
+            if (!$latestNota) {
+                $notaNumber = 1;
+            } else {
+                $notaNumber = intval(substr($latestNota, strpos($latestNota, '_') + 1)) + 1;
+            }
+            $model->ID_NOTA = 'NOTA_' . $notaNumber;
         });
     }
 

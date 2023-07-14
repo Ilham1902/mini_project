@@ -16,7 +16,7 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        $data = Penjualan::all();
+        $data = Penjualan::join('pelanggan', 'pelanggan.ID_PELANGGAN', '=', 'penjualan.KODE_PELANGGAN')->get();
 
         return response()->json($data, 200);
     }
@@ -70,9 +70,17 @@ class PenjualanController extends Controller
      */
     public function show($id)
     {
-        $data = Penjualan::where('ID_NOTA', $id)->get();
+        $penjualan = Penjualan::join('pelanggan', 'pelanggan.ID_PELANGGAN', '=', 'penjualan.KODE_PELANGGAN')->where('ID_NOTA', $id)->get();
+        $item_penjualan = Penjualan::select('penjualan.SUB_TOTAL', 'barang.NAMA as nama_barang', 'barang.harga', 'item_penjualan.qty', 'item_penjualan.KODE_BARANG')
+            ->join('item_penjualan', 'item_penjualan.NOTA', '=', 'penjualan.ID_NOTA')
+            ->join('barang', 'barang.KODE', '=', 'item_penjualan.KODE_BARANG')
+            ->where('ID_NOTA', $id)
+            ->get();
 
-        return response()->json($data, 200);
+        return response()->json([
+            "penjualan" => $penjualan,
+            "item_penjualan" => $item_penjualan
+        ], 200);
     }
 
     /**
