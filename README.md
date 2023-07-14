@@ -7,7 +7,7 @@ Use Project
 
 Untuk interface atau front-end nya bisa di clonnig dari project interface_mini_project
 
-NOTE!!!
-Kedua server harus berjalan, baik dari sisi api maupun sisi interface/frontend agar saling terhubung satu sama lain
+**NOTE!!!**<br>
+**Kedua server harus berjalan, baik dari sisi api maupun sisi interface/frontend agar saling terhubung satu sama lain**
 
 Thanks
